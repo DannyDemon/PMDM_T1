@@ -1,0 +1,49 @@
+<resources>
+    <string name = "app_name"> Manga </string>
+    <string name = "name"> Name </string>
+    <string name = "password"> Password </string>
+    <string name = "phone"> Phone </string>
+    <string name = "uploadPhoto"> Upload photo </string>
+    <string name = "accept"> Accept </string>
+    <string name = "volver"> Return </string>
+
+    <string name = "start"> Start </string>
+    <string name = "register"> Register </string>
+    <string name = "menuPrincial"> Main menu </string>
+
+    <string name = "moditelephone"> Modify phone </string>
+    <string name = "deleteUsuario"> Delete user </string>
+    <string name = "verData"> View user data </string>
+    <string name = "assignRoles"> Assign roles to user </string>
+
+    <string name = "newPhone"> New phone </string>
+    <string name = "roles"> Roles </string>
+
+    <string name = "modifyRol"> Modify role </string>
+    <string name = "admin"> Admin </string>
+    <string name = "manager"> Manager </string>
+
+
+    <string name="nombre">Nombre</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="telefono">Telefono</string>
+    <string name="cargarFoto">Cargar foto</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="volverES">Volver</string>
+
+    <string name="iniciar">Iniciar</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="menuPrincialES">Menu principal</string>
+
+    <string name="moditelefono">Modificar telefono</string>
+    <string name="borrarUsuario">Borrar usuario</string>
+    <string name="verDatos">Ver datos usuario</string>
+    <string name="asignarRoles">Asignar roles a usuario</string>
+
+    <string name="telefonoNuevo">Telefono Nuevo</string>
+    <string name="rolesEs">Roles</string>
+
+    <string name="modificarRol">Modificar rol</string>
+    <string name="adminEs">Admin</string>
+    <string name="gestor">Gestor</string>
+</resources>

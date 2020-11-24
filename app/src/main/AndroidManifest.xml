@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.api">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" ></uses-permission>-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" ></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/lanzador"
+        android:label="Manga"
+        android:roundIcon="@mipmap/ic_launcher_foreground"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".VerDatos" />
+        <activity android:name=".VerMangas" />
+        <activity android:name=".ModTel" />
+        <activity android:name=".MenuUsuario" />
+        <activity android:name=".BorrarUsuario" />
+        <activity android:name=".ModRol" />
+        <activity android:name=".Animacion">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Registrar" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+
+            android:authorities="${applicationId}.fileprovider"
+
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths">
+            </meta-data>
+        </provider>
+    </application>
+
+</manifest>

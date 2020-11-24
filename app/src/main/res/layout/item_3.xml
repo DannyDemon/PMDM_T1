@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/idManga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Id Manga: "
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
+
+            <ImageView
+                android:id="@+id/idFoto"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@id/idUsuario"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                <RadioButton
+                    android:id="@+id/radio_si"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="Like"
+                    />
+
+                <RadioButton
+                    android:id="@+id/radio_nop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="Dislike" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/idNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Nombre: "
+                android:textColor="@color/colorAzul"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
+
+
+                <TextView
+                    android:id="@+id/idDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=" "
+                    android:textSize="20dp"
+                    android:textStyle="bold|italic" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

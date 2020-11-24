@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradiente"
+    tools:context=".MenuUsuario">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorAzul" />
+
+        <Button
+            android:id="@+id/Boton1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_red"
+            android:onClick="miModTel"
+            android:text="Modificar Telefono" />
+
+        <Button
+            android:id="@+id/Boton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_red"
+            android:onClick="miBorrarUsu"
+            android:text="Borrar usuario" />
+
+        <Button
+            android:id="@+id/Boton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_red"
+            android:onClick="miVer"
+            android:text="Ver datos usuario" />
+
+        <Button
+            android:id="@+id/Boton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_red"
+            android:onClick="miRol"
+            android:text="Asignar roles a usuarios" />
+
+        <Button
+            android:id="@+id/Boton5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_red"
+            android:onClick="miManga"
+            android:text="Lista de Mangas" />
+
+    </LinearLayout>
+</ScrollView>
