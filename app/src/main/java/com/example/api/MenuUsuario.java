@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MenuUsuario extends AppCompatActivity {
+    // Variables
     private final String Extra_ges = "ges";
     private final String Extra_root = "root";
     private final String Extra_usu = "usu";
@@ -27,7 +28,7 @@ public class MenuUsuario extends AppCompatActivity {
     CapituloBaseSQLite bd = new CapituloBaseSQLite(this, "Manga", null, 1);
     BBDD cbdd = new BBDD(this);
 
-
+    // metodo que carga la pantalla
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class MenuUsuario extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_menu_usuario);
-
+        // enlaze de las botones y el toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         if (null != toolbar) {
             setSupportActionBar(toolbar);
@@ -57,6 +58,7 @@ public class MenuUsuario extends AppCompatActivity {
         boton3.setVisibility(View.GONE);
         boton4.setVisibility(View.GONE);
 
+        // Recojje las variables pasadas de la vista anterior.
         Intent intent = getIntent();
 
         ges = intent.getStringExtra(Extra_ges);
@@ -77,6 +79,7 @@ public class MenuUsuario extends AppCompatActivity {
         }
     }
 
+    // Va a modificar el telefono y asa las propiedades
     public void miModTel(View v) {
         Intent intent = new Intent(v.getContext(), ModTel.class);
         intent.putExtra(Extra_ges, ges);
@@ -85,7 +88,7 @@ public class MenuUsuario extends AppCompatActivity {
 
         startActivity(intent);
     }
-
+    // Va a borrar usuario y asa las propiedades
     public void miBorrarUsu(View v) {
         Intent intent = new Intent(v.getContext(), BorrarUsuario.class);
         intent.putExtra(Extra_ges, ges);
@@ -94,6 +97,7 @@ public class MenuUsuario extends AppCompatActivity {
 
         startActivity(intent);
     }
+    // Va a ver los datos y asa las propiedades
 
     public void miVer(View v) {
         Intent intent = new Intent(v.getContext(), VerDatos.class);
@@ -103,6 +107,7 @@ public class MenuUsuario extends AppCompatActivity {
 
         startActivity(intent);
     }
+    // Va a ver roles y asa las propiedades
 
     public void miRol(View v) {
         Intent intent = new Intent(v.getContext(), ModRol.class);
@@ -115,8 +120,9 @@ public class MenuUsuario extends AppCompatActivity {
 
 
 
-    //DIFERENTES METODOS DE LOS BOTONES
 
+
+    // Va a ver manga y asa las propiedades
 
     public void miManga(View v) {
         Intent intent = new Intent(v.getContext(), VerMangas.class);
@@ -132,7 +138,7 @@ public class MenuUsuario extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu1, menu);
         return true;
     }
-
+    //DIFERENTES METODOS DE LOS BOTONES del toolbar
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {

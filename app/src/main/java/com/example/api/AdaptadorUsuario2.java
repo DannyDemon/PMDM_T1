@@ -91,5 +91,6 @@ public class AdaptadorUsuario2 extends RecyclerView.Adapter<AdaptadorUsuario2.Vi
             }
         }
 
+
     }
 }

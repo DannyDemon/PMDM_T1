@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class BBDD {
-
+    // Creacion de las variables.
     private static final int VERSION = 1;
     private static final String NOMBRE_BBDD = "Manga.db";
 
@@ -40,30 +40,30 @@ public class BBDD {
     private static final int path_MANGA = 3;
 
 
-
+    // Creacionn de los atributos
     private SQLiteDatabase bbdd;
     private CapituloBaseSQLite Manga;
-
+    //Contructor de la base de dattos
     public BBDD(Context context) {
         Manga = new CapituloBaseSQLite(context, NOMBRE_BBDD, null, VERSION);
     }
-
+    // Abre la base de datos para la escritura sobre ella.
     public void openForWrite() {
         bbdd = Manga.getWritableDatabase();
     }
-
+    // Abre la base de datos para la lectura sobre ella
     public void openForRead() {
         bbdd = Manga.getReadableDatabase();
     }
-
+    // Cierra la base de datos
     public void close() {
         bbdd.close();
     }
-
+    // Getter del atributo BBDD
     public SQLiteDatabase getBbdd() {
         return bbdd;
     }
-
+    // Operacion de creacion de usuario
     public long insertUsuario(Usuario usuario) {
         ContentValues content = new ContentValues();
         content.put(idUsuario, usuario.getId());
@@ -76,7 +76,7 @@ public class BBDD {
 
         return bbdd.insert(TABLA_USUARIOS, null, content);
     }
-
+    // Operacion de actualizacion de usuario
     public int updateUsuario(int id, Usuario usuario) {
         ContentValues content = new ContentValues();
         content.put(nombreUsuario, usuario.getNombre());
@@ -86,11 +86,11 @@ public class BBDD {
         content.put(rolRootUsuario, usuario.isRoot());
         return bbdd.update(TABLA_USUARIOS, content, idUsuario + " = " + id, null);
     }
-
+    // Operacion para borrado de usuario
     public int removeUsuario(int id) {
         return bbdd.delete(TABLA_USUARIOS, idUsuario + " = " + id, null);
     }
-
+    // Devuelve una listaa con los usuarios.
     public ArrayList<Usuario> getUsuarios() {
         ArrayList<Usuario> variable = new ArrayList<>();
         Cursor cursores = bbdd.query(TABLA_USUARIOS, new String[]{idUsuario, nombreUsuario, contraUsuario, telefonoUsuario,
@@ -114,7 +114,7 @@ public class BBDD {
         return variable;
     }
 
-
+    // Metodo para ver los datos
     public void ver() {
         ArrayList<Usuario> variable = new ArrayList<>();
         Cursor cursores = bbdd.query(TABLA_USUARIOS, new String[]{idUsuario, nombreUsuario, contraUsuario, telefonoUsuario,
@@ -142,7 +142,7 @@ public class BBDD {
 
         }
     }
-
+    // Operacion para insertar manga
     public long insertManga(Manga manga) {
         ContentValues content = new ContentValues();
         content.put(idManga, manga.getId());
@@ -152,7 +152,7 @@ public class BBDD {
 
         return bbdd.insert(TABLA_MANGA, null, content);
     }
-
+    // Lista de mangas
     public ArrayList<Manga> getMangas() {
         ArrayList<Manga> variable = new ArrayList<>();
         Cursor cursores = bbdd.query(TABLA_MANGA, new String[]{idManga, nombreManga, desManga, pathManga}, null, null, null, null, idUsuario);
@@ -174,7 +174,7 @@ public class BBDD {
     }
 
 
-
+    // metodo que permite los datos de manga
     public void verManga() {
         ArrayList<Manga> variable = new ArrayList<>();
         Cursor cursores = bbdd.query(TABLA_MANGA, new String[]{idManga, nombreManga, desManga, pathManga}, null, null, null, null, idUsuario);
@@ -199,7 +199,7 @@ public class BBDD {
 
         }
     }
-
+    // Metodo de borrado total
     public void removeAll() {
         Manga.onUpgrade(bbdd, VERSION, VERSION + 1);
     }

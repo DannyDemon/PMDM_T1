@@ -22,6 +22,8 @@ import java.util.Iterator;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    //Creacion de variables
     static ArrayList<Usuario> usuarios = new ArrayList();
     static boolean res = false;
 
@@ -31,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
     static Usuario activeuser;
 
-
-
     TextView campoTextView1;
 
     EditText campoNombre;
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     Button campoButton1;
     Button campoButton2;
 
+    // Metodo que se inicia al arracar la pagina
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         CapituloBaseSQLite bd = new CapituloBaseSQLite(this, "Manga", null, 1);
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         usuarios = (ArrayList<Usuario>) cbdd.getUsuarios();
 
 
-        //CEACION DE USUARIOS POR DEFECO
+        //CEACION DE mangas POR DEFECO
         Manga manga1 = new Manga("Strongest Abandoned Son",
                 "Cuando Ye Mo se despertó repentinamente, se dio cuenta de " +
                         "que todo a su alrededor parecía haber cambiado. Ha sido " +
@@ -85,19 +86,19 @@ public class MainActivity extends AppCompatActivity {
                         "obligación rescatar a la gente y crear un nuevo mundo.", R.drawable.dr);
 
 
-        //INSERTAR USARIOS EN LA BD
+        //INSERTAR manga EN LA BD
         //cbdd.insertManga(manga1);
         //cbdd.insertManga(manga2);
         //cbdd.insertManga(manga3);
 
 
-
+        // Metodo de ejecucion del programa
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_main);
-
+        //Enlaza los datos de los xml en las variables
         campoTextView1 = findViewById(R.id.TextView1);
 
         campoNombre = findViewById(R.id.editText1);
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
         campoButton1 = findViewById(R.id.button1);
         campoButton2 = findViewById(R.id.button2);
-
+        //Traduce la pagina
         Switch onOffSwitch = (Switch)  findViewById(R.id.switch1);
         onOffSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
@@ -133,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
-
+        // shared preference recibe el mensaje cuando registra si va bien.
         SharedPreferences preferencias=getSharedPreferences("variables", Context.MODE_PRIVATE);
         String mensaje = preferencias.getString("Mensaje","");
         SharedPreferences.Editor editor=preferencias.edit();
