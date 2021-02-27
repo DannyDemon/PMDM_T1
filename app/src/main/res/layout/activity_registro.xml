@@ -20,7 +20,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Registro de usuario"
+            android:text="@string/RegistroDeUsuario"
             android:textSize="25dp"
             android:textStyle="bold" />
 
@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:hint="Nombre"
+            android:hint="@string/nombre"
             android:text="" />
 
         <EditText
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:hint="Contraseña"
+            android:hint="@string/contraseña"
             android:text="" />
 
         <EditText
@@ -45,8 +45,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:hint="Telefono"
+            android:hint="@string/telefono"
             android:text="" />
+
         <ImageView
             android:id="@+id/laFoto"
             android:layout_width="match_parent"
@@ -58,9 +59,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:onClick="onClick"
             android:background="@drawable/btn_red"
-            android:text="Cargar Foto" />
+            android:onClick="onClick"
+            android:text="@string/cargarFoto" />
+
         <Button
             android:id="@+id/button1"
             android:layout_width="match_parent"
@@ -69,7 +71,7 @@
             android:background="@drawable/btn_red"
             android:gravity="center"
             android:onClick="Aceptar"
-            android:text="Aceptar" />
+            android:text="@string/aceptar" />
 
         <Button
             android:id="@+id/button2"

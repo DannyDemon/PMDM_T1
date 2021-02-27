@@ -91,3 +91,4 @@ public class AdaptadorManga extends RecyclerView.Adapter<AdaptadorManga.ViewHold
 
     }
 }
+

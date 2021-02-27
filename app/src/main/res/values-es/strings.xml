@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="borrarUsuario">Borrar Usuario</string>
+    <string name="volver">Volver</string>
+
+    <string name="menuPrincial">Menu principal</string>
+    <string name="usuario">Usuario</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="iniciar">Iniciar</string>
+    <string name="registrarse">Registrarse</string>
+
+    <string name="modificarRol">Modificar rol</string>
+    <string name="gestor">Gestor</string>
+    <string name="root">Root</string>
+
+
+    <string name="modificarTelefono">Modificar telefono</string>
+    <string name="telefonoNuevo">Telefono nuevo</string>
+
+    <string name="RegistroDeUsuario">Registro de usuario</string>
+    <string name="cargarFoto">Cargar Foto</string>
+    <string name="aceptar">Aceptar</string>
+
+
+    <string name="verDatosDeUsuario">Ver Datos de Usuario</string>
+
+    <string name="verMangas">Ver Mangas</string>
+
+    <string name="roles">Roles: </string>
+
+    <string name="idUsuario">Id Usuario: </string>
+    <string name="telefono">Telefono: </string>
+
+    <string name="idManga">Id Manga: </string>
+    <string name="nombre">Nombre: </string>
+    <string name="like">Like</string>
+    <string name="dislike">Dislike</string>
+
+</resources>

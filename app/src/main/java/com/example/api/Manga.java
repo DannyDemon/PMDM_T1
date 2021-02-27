@@ -16,6 +16,7 @@ public class Manga {
         this.path = path;
     }
 
+
     public Manga(Integer id, String nombre, String descripcion, int path) {
         this.id = id;
         this.nombre = nombre;

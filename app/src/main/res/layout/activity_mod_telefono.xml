@@ -20,7 +20,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Modificar telefono"
+            android:text="@string/modificarTelefono"
             android:textSize="25dp"
             android:textStyle="bold" />
 
@@ -49,7 +49,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:background="@drawable/btn_red"
-            android:text="Volver"
+            android:text="@string/volver"
             android:onClick="miVolver"/>
 
     </LinearLayout>

@@ -25,7 +25,7 @@
             android:layout_margin="10dp"
             android:background="@drawable/btn_red"
             android:onClick="miModTel"
-            android:text="Modificar Telefono" />
+            android:text="@string/modificarTelefono" />
 
         <Button
             android:id="@+id/Boton2"
@@ -34,7 +34,7 @@
             android:layout_margin="10dp"
             android:background="@drawable/btn_red"
             android:onClick="miBorrarUsu"
-            android:text="Borrar usuario" />
+            android:text="@string/borrarUsuario" />
 
         <Button
             android:id="@+id/Boton3"
@@ -43,7 +43,7 @@
             android:layout_margin="10dp"
             android:background="@drawable/btn_red"
             android:onClick="miVer"
-            android:text="Ver datos usuario" />
+            android:text="@string/verDatosDeUsuario" />
 
         <Button
             android:id="@+id/Boton4"
@@ -52,7 +52,7 @@
             android:layout_margin="10dp"
             android:background="@drawable/btn_red"
             android:onClick="miRol"
-            android:text="Asignar roles a usuarios" />
+            android:text="@string/modificarRol" />
 
         <Button
             android:id="@+id/Boton5"
@@ -61,7 +61,7 @@
             android:layout_margin="10dp"
             android:background="@drawable/btn_red"
             android:onClick="miManga"
-            android:text="Lista de Mangas" />
+            android:text="@string/verMangas" />
 
     </LinearLayout>
 </ScrollView>

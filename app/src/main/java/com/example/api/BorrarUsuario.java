@@ -125,5 +125,6 @@ public class BorrarUsuario extends AppCompatActivity {
         intent.putExtra(Extra_usu, user);
 
         startActivity(intent);
+
     }
 }

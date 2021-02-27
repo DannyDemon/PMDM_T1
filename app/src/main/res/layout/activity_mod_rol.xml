@@ -18,7 +18,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Modificar Rol"
+            android:text="@string/modificarRol"
             android:textSize="25dp"
             android:textStyle="bold" />
 
@@ -34,14 +34,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Gestor" />
+            android:text="@string/gestor" />
 
         <CheckBox
             android:id="@+id/checkBox3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Root" />
+            android:text="@string/root" />
 
         <Button
             android:id="@+id/button2"

@@ -20,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Id Manga: "
+                android:text="@string/idManga"
                 android:textSize="20dp"
                 android:textStyle="bold|italic" />
 
@@ -41,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
-                    android:text="Like"
+                    android:text="@string/like"
                     />
 
                 <RadioButton
@@ -49,7 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
-                    android:text="Dislike" />
+                    android:text="@string/dislike" />
             </RadioGroup>
 
         </LinearLayout>
@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Nombre: "
+                android:text="@string/nombre"
                 android:textColor="@color/colorAzul"
                 android:textSize="20dp"
                 android:textStyle="bold|italic" />

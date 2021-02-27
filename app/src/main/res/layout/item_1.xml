@@ -20,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Id Usuario: "
+                android:text="@string/idUsuario"
                 android:textSize="20dp"
                 android:textStyle="bold|italic" />
 
@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Nombre: "
+                android:text="@string/nombre"
                 android:textColor="@color/colorAzul"
                 android:textSize="20dp"
                 android:textStyle="bold|italic" />
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Telefono: "
+                android:text="@string/telefono"
                 android:textSize="20dp"
                 android:textStyle="bold|italic" />
 
@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Roles: "
+                android:text="@string/roles"
                 android:textSize="20dp"
                 android:textStyle="bold|italic" />
 

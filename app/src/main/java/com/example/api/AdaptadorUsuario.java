@@ -94,10 +94,12 @@ public class AdaptadorUsuario extends RecyclerView.Adapter<AdaptadorUsuario.View
                 elRoot.setText("\t\tRoot");
             }
 
+
             if(usuario.getPath()==null){
                 laImagen.setImageResource(R.drawable.im1);
 
             }else{
+                // Reajusta el dpi de las imagenes para los aplicacion
                 Drawable d = Drawable.createFromPath(usuario.getPath());
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                     laImagen.setBackground(d);

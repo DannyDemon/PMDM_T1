@@ -82,6 +82,7 @@ public class VerMangas extends AppCompatActivity {
         intent.putExtra(Extra_root, root);
         intent.putExtra(Extra_usu, user);
 
+
         startActivity(intent);
     }
 }
