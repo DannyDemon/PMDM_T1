@@ -46,13 +46,13 @@ public class MainActivity extends AppCompatActivity {
         BBDD cbdd = new BBDD(this);
         cbdd.openForWrite();
         //BORRAR REGISTROS DDE LA BASE DE DATOS
-        //cbdd.removeAll();
+        cbdd.removeAll();
 
         //CEACION DE USUARIOS POR DEFECO
         Usuario admin = new Usuario("Admin", "Admin", 927179367, 1, 1);
 
         //INSERTAR USARIOS EN LA BD
-        //cbdd.insertUsuario(admin);
+        cbdd.insertUsuario(admin);
         usuarios = (ArrayList<Usuario>) cbdd.getUsuarios();
 
 
@@ -85,9 +85,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         //INSERTAR manga EN LA BD
-        //cbdd.insertManga(manga1);
-        //cbdd.insertManga(manga2);
-        //cbdd.insertManga(manga3);
+        cbdd.insertManga(manga1);
+        cbdd.insertManga(manga2);
+        cbdd.insertManga(manga3);
 
 
         // Metodo de ejecucion del programa
@@ -111,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
     //COMPRUEBA LA UTENTIFICACION
     public boolean comprobarInicio() {
 
+         campoNombre  = findViewById(R.id.editText1);
+         campoContra =findViewById(R.id.editText2);
 
         boolean nom = false;
         boolean con = false;

@@ -5,12 +5,25 @@
     <item
         android:id="@+id/item1"
         android:icon="@android:drawable/ic_menu_manage"
-        android:title="Cerrar aplicacion"
+        android:title="@string/modificarTelefono"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/item2"
         android:icon="@android:drawable/ic_menu_manage"
-        android:title="Deslogearte"
+        android:title="@string/borrarUsuario"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/item3"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="@string/verDatosDeUsuario"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/item4"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="@string/modificarRol"
+        app:showAsAction="never" />
+
 </menu>

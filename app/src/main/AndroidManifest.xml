@@ -17,7 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".VerDatos" />
-        <activity android:name=".VerMangas" />
         <activity android:name=".ModTel" />
         <activity android:name=".MenuUsuario" />
         <activity android:name=".BorrarUsuario" />

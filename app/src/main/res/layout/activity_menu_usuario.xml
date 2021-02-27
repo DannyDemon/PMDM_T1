@@ -18,50 +18,10 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorAzul" />
 
-        <Button
-            android:id="@+id/Boton1"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/miRecycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/btn_red"
-            android:onClick="miModTel"
-            android:text="@string/modificarTelefono" />
-
-        <Button
-            android:id="@+id/Boton2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/btn_red"
-            android:onClick="miBorrarUsu"
-            android:text="@string/borrarUsuario" />
-
-        <Button
-            android:id="@+id/Boton3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/btn_red"
-            android:onClick="miVer"
-            android:text="@string/verDatosDeUsuario" />
-
-        <Button
-            android:id="@+id/Boton4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/btn_red"
-            android:onClick="miRol"
-            android:text="@string/modificarRol" />
-
-        <Button
-            android:id="@+id/Boton5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/btn_red"
-            android:onClick="miManga"
-            android:text="@string/verMangas" />
-
+            android:layout_height="0dp"
+            android:layout_weight="2" />
     </LinearLayout>
 </ScrollView>
