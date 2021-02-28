@@ -1,10 +1,16 @@
 package com.example.api;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Layout;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,10 +74,8 @@ public class BorrarUsuario extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //SACA MENSAJE CON EL ELEMENTO PULSADO
-                Toast.makeText(getApplicationContext(),
-                        "Pulsado " + miLista.get(miRecycler.getChildAdapterPosition(v)).getNombre(),
-                        Toast.LENGTH_SHORT).show();
+                mostrarToast(getResources().getString(R.string.pulsado)+ miLista.get(miRecycler.getChildAdapterPosition(v)).getNombre());
+
                 //GUARDA LA POSICION DEL ELEMENTO PULSADO
                 modificar = miRecycler.getChildAdapterPosition(v);
 
@@ -96,7 +100,7 @@ public class BorrarUsuario extends AppCompatActivity {
                         cargarDatos();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "No pueder borrar el usuario activo", Toast.LENGTH_SHORT).show();
+                   mostrarToast(getResources().getString(R.string.borradoUsuario));
                     cargarDatos();
                 }
 
@@ -126,5 +130,19 @@ public class BorrarUsuario extends AppCompatActivity {
 
         startActivity(intent);
 
+    }
+
+    private void mostrarToast(String texto){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout =inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.layout_base));
+
+        TextView textView =layout.findViewById(R.id.txt);
+        textView.setText(texto);
+
+         Toast toast=new Toast(getApplicationContext());
+         toast.setGravity(Gravity.CENTER, 0, 0);
+         toast.setDuration(Toast.LENGTH_LONG);
+         toast.setView(layout);
+         toast.show();
     }
 }

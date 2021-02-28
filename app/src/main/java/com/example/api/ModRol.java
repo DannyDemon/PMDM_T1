@@ -2,11 +2,15 @@ package com.example.api;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,9 +72,9 @@ public class ModRol extends AppCompatActivity {
         elAdaptador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),
-                        "Pulsado " + miLista.get(miRecycler.getChildAdapterPosition(v)).getNombre(),
-                        Toast.LENGTH_SHORT).show();
+                mostrarToast(getResources().getString(R.string.pulsado)+ miLista.get(miRecycler.getChildAdapterPosition(v)).getNombre());
+
+
                 //GUARDA LA POSICION DEL ELEMENTO PULSADO
                 modificar = miRecycler.getChildAdapterPosition(v);
 
@@ -109,7 +113,7 @@ public class ModRol extends AppCompatActivity {
                     }
                     cbdd.ver();
                 } else {
-                    Toast.makeText(getApplicationContext(), "No pueder cambiar el rol del usuario activo", Toast.LENGTH_SHORT).show();
+                    mostrarToast(getResources().getString(R.string.noRolActivo));
                     cargarDatos();
                 }
             }
@@ -139,5 +143,19 @@ public class ModRol extends AppCompatActivity {
 
         startActivity(intent);
 
+    }
+
+    private void mostrarToast(String texto){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout =inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.layout_base));
+
+        TextView textView =layout.findViewById(R.id.txt);
+        textView.setText(texto);
+
+        Toast toast=new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
     }
 }

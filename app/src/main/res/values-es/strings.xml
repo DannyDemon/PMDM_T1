@@ -37,4 +37,19 @@
     <string name="like">Like</string>
     <string name="dislike">Dislike</string>
 
+
+    <string name="pulsado">Pulsado</string>
+    <string name="borradoUsuario">No pueder borrar el usuario activo</string>
+
+
+    <string name="introduceNume">Introduce solo numeros</string>
+    <string name="noTelefono">No has introducido el telefono</string>
+    <string name="noRolActivo">No pueder cambiar el rol del usuario activo</string>
+    <string name="hacerfotos">Hacer fotos</string>
+    <string name="camposObligatorios">Todos los datos son obligatorios</string>
+    <string name="introduceNumeTelefono">Introduce solo numeros en el campo telefono</string>
+    <string name="permisos">Los permisos no fueron aceptados</string>
+
+
+
 </resources>

@@ -37,4 +37,15 @@
     <string name="like">Like</string>
     <string name="dislike">Dislike</string>
 
+    <string name="pulsado">Pressed </string>
+    <string name="borradoUsuario">You cannot delete the active user</string>
+
+
+    <string name="introduceNume">Enter only numbers</string>
+    <string name="noTelefono">You have not entered the phone</string>
+    <string name="noRolActivo">You cannot change the role of the active user</string>
+    <string name="hacerfotos">Take pictures</string>
+    <string name="camposObligatorios">All data are required</string>
+    <string name="introduceNumeTelefono">Enter only numbers in the phone field</string>
+    <string name="permisos">Permits were not accepted</string>
 </resources>

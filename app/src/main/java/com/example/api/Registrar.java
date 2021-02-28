@@ -15,12 +15,16 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -80,7 +84,8 @@ public class Registrar extends AppCompatActivity {
         String con = campoContra.getText().toString();
         String tel = campoTel.getText().toString();
         if ((nom == null) || (con == null) || (tel == null) || (currentPhotoPath==null)) {
-            Toast.makeText(getApplicationContext(), "Todos los datos son obligatorios", Toast.LENGTH_SHORT).show();
+            mostrarToast(getResources().getString(R.string.camposObligatorios));
+
         }else{
             if (Entradas.comprNumerico(tel.toString()) == true) {
 
@@ -96,7 +101,7 @@ public class Registrar extends AppCompatActivity {
                 Intent intent = new Intent(Registrar.this, MainActivity.class);
                 startActivity(intent);
             } else {
-                Toast.makeText(getApplicationContext(), "Introduce solo numeros en el campo telefono", Toast.LENGTH_SHORT).show();
+                mostrarToast(getResources().getString(R.string.introduceNumeTelefono));
             }
         }
     }
@@ -173,7 +178,8 @@ public class Registrar extends AppCompatActivity {
                     }
                     /////////////////////////////////////////////
                 } else {
-                    Toast.makeText(getApplicationContext(), "Los permisos no fueron aceptados", Toast.LENGTH_LONG).show();
+                    mostrarToast(getResources().getString(R.string.permisos));
+
                     dialog.dismiss();
                 }
             }
@@ -194,7 +200,7 @@ public class Registrar extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 if (opc[which].equals("Hacer Foto")) {
                     hacerFoto();
-                    Toast.makeText(getApplicationContext(), "Hacer fotos", Toast.LENGTH_LONG).show();
+                    mostrarToast(getResources().getString(R.string.hacerfotos));
                 }
 
             }
@@ -220,7 +226,6 @@ public class Registrar extends AppCompatActivity {
                                     Log.i("ExternalStorage", "-> uri=" + uri);
                                 }
                             });
-                    //Toast.makeText(getApplicationContext(), "Hacer fotos", Toast.LENGTH_LONG).show();
                     Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath);
                     miFoto.setImageBitmap(bitmap);
                     break;
@@ -266,6 +271,20 @@ public class Registrar extends AppCompatActivity {
         // Save a file: path for use with ACTION_VIEW intents
         currentPhotoPath = image.getAbsolutePath(); //Variable global
         return image;
+    }
+
+    private void mostrarToast(String texto){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout =inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.layout_base));
+
+        TextView textView =layout.findViewById(R.id.txt);
+        textView.setText(texto);
+
+        Toast toast=new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
     }
 
 }

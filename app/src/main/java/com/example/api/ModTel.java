@@ -6,10 +6,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -75,9 +79,8 @@ public class ModTel extends AppCompatActivity {
                 if (!edit.getText().toString().equals("")) {
                     //SI NO PASAS UN NUMERO NOS SALE UN PANEL INFORMANDO QUE HAS DE PASAR NUMEROS
                     if (Entradas.comprNumerico(edit.getText().toString()) == true) {
-                        Toast.makeText(getApplicationContext(),
-                                "Pulsado " + miLista.get(miRecycler.getChildAdapterPosition(v)).getNombre(),
-                                Toast.LENGTH_SHORT).show();
+                        mostrarToast(getResources().getString(R.string.pulsado)+ miLista.get(miRecycler.getChildAdapterPosition(v)).getNombre());
+
                         //GUARDA LA POSICION DEL ELEMENTO PULSADO
                         modificar = miRecycler.getChildAdapterPosition(v);
 
@@ -105,11 +108,11 @@ public class ModTel extends AppCompatActivity {
                             cargarDatos();
                         }
                     } else {
-                        Toast.makeText(getApplicationContext(), "Introduce solo numeros", Toast.LENGTH_SHORT).show();
+                        mostrarToast(getResources().getString(R.string.introduceNume));
                         cargarDatos();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "No has introducido el telefono", Toast.LENGTH_SHORT).show();
+                    mostrarToast(getResources().getString(R.string.noTelefono));
                     cargarDatos();
                 }
             }
@@ -139,6 +142,20 @@ public class ModTel extends AppCompatActivity {
         intent.putExtra(Extra_usu, user);
 
         startActivity(intent);
+    }
+
+    private void mostrarToast(String texto){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout =inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.layout_base));
+
+        TextView textView =layout.findViewById(R.id.txt);
+        textView.setText(texto);
+
+        Toast toast=new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
     }
 }
 

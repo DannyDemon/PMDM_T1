@@ -3,6 +3,9 @@ package com.example.api;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.widget.Toast;
 import android.content.Context;
 import android.content.Intent;
@@ -105,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor=preferencias.edit();
         editor.remove("Mensaje");
         editor.commit();
-        if(!mensaje.equals(""))Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+        if(!mensaje.equals("")) mostrarToast(mensaje);
     }
 
     //COMPRUEBA LA UTENTIFICACION
@@ -162,5 +165,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void mostrarToast(String texto){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout =inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.layout_base));
 
+        TextView textView =layout.findViewById(R.id.txt);
+        textView.setText(texto);
+
+        Toast toast=new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
 }
