@@ -73,4 +73,6 @@
     <string name="marque">Check one option</string>
     <string name="seleccione">Select the Application</string>
 
+    <string name="desconectar"><u>Disconnect</u></string>
+
 </resources>

@@ -122,7 +122,7 @@ public class MenuUsuario extends AppCompatActivity {
                 editor.putString("Extra_page", "tel");
                 editor.commit();
 
-                Intent intent = new Intent(MenuUsuario.this, Animacion2.class);
+                Intent intent = new Intent(MenuUsuario.this, ModTel.class);
                 if (ges.equals("1") || Integer.parseInt(root) == 1) {
                     startActivity(intent);
                 } else {
@@ -141,7 +141,7 @@ public class MenuUsuario extends AppCompatActivity {
 
                 editor2.commit();
 
-                Intent intent2 = new Intent(MenuUsuario.this, Animacion2.class);
+                Intent intent2 = new Intent(MenuUsuario.this, BorrarUsuario.class);
                 if (Integer.parseInt(root) == 1) {
                     startActivity(intent2);
                 } else {
@@ -159,7 +159,7 @@ public class MenuUsuario extends AppCompatActivity {
                 editor3.putString("Extra_page", "datos");
                 editor3.commit();
 
-                Intent intent3 = new Intent(MenuUsuario.this, Animacion2.class);
+                Intent intent3 = new Intent(MenuUsuario.this, VerDatos.class);
                 if (ges.equals("1") || Integer.parseInt(root) == 1) {
                     startActivity(intent3);
                 } else {
@@ -179,7 +179,7 @@ public class MenuUsuario extends AppCompatActivity {
                 editor4.putString("Extra_page", "rol");
                 editor4.commit();
 
-                Intent intent4 = new Intent(MenuUsuario.this, Animacion2.class);
+                Intent intent4 = new Intent(MenuUsuario.this, ModRol.class);
                 if (Integer.parseInt(root) == 1) {
                     startActivity(intent4);
                 } else {
@@ -197,7 +197,7 @@ public class MenuUsuario extends AppCompatActivity {
                 editor5.putString("Extra_page", "video");
                 editor5.commit();
 
-                Intent intent5 = new Intent(MenuUsuario.this, Animacion2.class);
+                Intent intent5 = new Intent(MenuUsuario.this, Video.class);
                 startActivity(intent5);
 
                 return true;
@@ -213,8 +213,15 @@ public class MenuUsuario extends AppCompatActivity {
                 editor6.putString("Extra_page", "poke");
                 editor6.commit();
 
-                Intent intent6 = new Intent(MenuUsuario.this, Animacion2.class);
+                Intent intent6 = new Intent(MenuUsuario.this, Poke.class);
                 startActivity(intent6);
+
+                return true;
+
+            case R.id.item7:
+
+                Intent intent7 = new Intent(MenuUsuario.this, MainActivity.class);
+                startActivity(intent7);
 
                 return true;
 

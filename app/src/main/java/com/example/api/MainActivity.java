@@ -115,12 +115,13 @@ public class MainActivity extends AppCompatActivity {
     //VA AL METODO REGISTRAR
     public void miRegistro(View v) {
         res = true;
-        Intent intent = new Intent(v.getContext(), Registrar.class);
+        Intent intent = new Intent(v.getContext(), Animacion2.class);
         startActivityForResult(intent, 0);
 
     }
 
     //VA AL MENU INICIAR
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void miIniciar(View v) throws Exception {
         boolean aut = comprobarInicio();
         if (aut) {

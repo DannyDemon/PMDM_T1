@@ -38,4 +38,10 @@
         android:title="@string/pokemon"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/item7"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="@string/desconectar"
+        app:showAsAction="never" />
+
 </menu>

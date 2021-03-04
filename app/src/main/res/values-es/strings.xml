@@ -73,5 +73,7 @@
     <string name="marque">Marque una opción</string>
     <string name="seleccione">Seleccione la Aplicación</string>
 
+    <string name="desconectar"><u>Desconectar</u></string>
+
 
 </resources>

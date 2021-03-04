@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -40,10 +42,12 @@ public class Poke extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_poke);
 
         // shared preference recibe el mensaje cuando registra si va bien.
-        SharedPreferences preferencias = getSharedPreferences("variables", Context.MODE_PRIVATE);
+       SharedPreferences preferencias = getSharedPreferences("variables", Context.MODE_PRIVATE);
         ges = preferencias.getString("Extra_ges", "");
         root = preferencias.getString("Extra_root", "");
         user = preferencias.getString("Extra_usu", "");
@@ -89,7 +93,9 @@ public class Poke extends AppCompatActivity {
 
         aptoParaCargar = true;
         offset = 0;
+
         obtenerDatos(offset);
+
     }
 
     private void obtenerDatos(int offset) {

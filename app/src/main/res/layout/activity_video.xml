@@ -34,6 +34,14 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/btn_red"
             android:text="@string/pause" />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_red"
+            android:gravity="center"
+            android:onClick="miVolver"
+            android:text="@string/volver" />
 
         <VideoView
             android:id="@+id/videoView"
@@ -44,16 +52,6 @@
             android:id="@+id/videoView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_red"
-            android:gravity="center"
-            android:onClick="miVolver"
-            android:text="@string/volver" />
-
 
     </LinearLayout>
 </RelativeLayout>
