@@ -63,7 +63,7 @@ public class Manga {
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", path='" + path + '\'' +
-                '}';
+                '}' ;
     }
 }
 

@@ -1,7 +1,5 @@
 package com.example.api;
 
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,18 +13,18 @@ import java.util.ArrayList;
 
 public class AdaptadorManga extends RecyclerView.Adapter<AdaptadorManga.ViewHolderDatos> implements View.OnClickListener {
 
-    private View.OnClickListener escuchador;
     ArrayList<Manga> miLista;
+    private View.OnClickListener escuchador;
+
+    public AdaptadorManga(ArrayList<Manga> miLista) {
+        this.miLista = miLista;
+    }
 
     public ArrayList<Manga> getMiLista() {
         return miLista;
     }
 
     public void setMiLista(ArrayList<Manga> miLista) {
-        this.miLista = miLista;
-    }
-
-    public AdaptadorManga(ArrayList<Manga> miLista) {
         this.miLista = miLista;
     }
 
@@ -72,19 +70,18 @@ public class AdaptadorManga extends RecyclerView.Adapter<AdaptadorManga.ViewHold
             laImagen = (ImageView) itemView.findViewById(R.id.idFoto);
             elNombre = (TextView) itemView.findViewById(R.id.idNombre);
             elDes = (TextView) itemView.findViewById(R.id.idDes);
-            laImagen=(ImageView) itemView.findViewById(R.id.idFoto);
         }
 
         public void asignarDatos(Manga manga) {
             System.out.println(manga);
             elManga.setText(manga.getId() + "");
             elNombre.setText(manga.getNombre());
-            elDes.setText(manga.getDescripcion() +"");
+            elDes.setText(manga.getDescripcion() + "");
 
-            if(manga.getPath()==0){
+            if (manga.getPath() == 0) {
                 laImagen.setImageResource(R.drawable.im1);
 
-            }else{
+            } else {
                 laImagen.setImageResource(manga.getPath());
             }
         }

@@ -35,14 +35,14 @@
 
             <RadioGroup
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
+
                 <RadioButton
                     android:id="@+id/radio_si"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
-                    android:text="@string/like"
-                    />
+                    android:text="@string/like" />
 
                 <RadioButton
                     android:id="@+id/radio_nop"
@@ -70,14 +70,14 @@
                 android:textStyle="bold|italic" />
 
 
-                <TextView
-                    android:id="@+id/idDes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text=" "
-                    android:textSize="20dp"
-                    android:textStyle="bold|italic" />
+            <TextView
+                android:id="@+id/idDes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=" "
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
 
         </LinearLayout>
 

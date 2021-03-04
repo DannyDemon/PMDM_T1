@@ -1,13 +1,23 @@
 package com.example.api;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,33 +29,38 @@ public class BorrarUsuario extends AppCompatActivity {
     RecyclerView miRecycler;
     AdaptadorUsuario2 elAdaptador;
     int modificar;
-    CapituloBaseSQLite bd = new CapituloBaseSQLite(this, "Manga", null, 1);
     BBDD cbdd = new BBDD(this);
     boolean vo = false;
-
-    //PARAMETROS QUE SE PASAN DESDE EL MENU DE USUARIOS
-    private final String Extra_ges = "ges";
-    private final String Extra_root = "root";
-    private final String Extra_usu = "usu";
 
     String ges;
     String root;
     String user;
 
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         //CONFIGURA LA APLICACION PARA QUE OCUPE TODA LA PANTALLA
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_bor_usu);
 
-        //SE GUARDAN LOS PARAMETROS PASADOS DESDE EL MENU A VARIABLES PROPIAS
-        Intent intent = getIntent();
-        ges = intent.getStringExtra(Extra_ges);
-        root = intent.getStringExtra(Extra_root);
-        user = intent.getStringExtra(Extra_usu);
+        Typeface font = ResourcesCompat.getFont(this, R.font.police_person);
+        TextView policePerson = (TextView) findViewById(R.id.TextView1);
+        policePerson.setTypeface(font);
+
+        // shared preference recibe el mensaje cuando registra si va bien.
+        SharedPreferences preferencias = getSharedPreferences("variables", Context.MODE_PRIVATE);
+        ges = preferencias.getString("Extra_ges", "");
+        root = preferencias.getString("Extra_root", "");
+        user = preferencias.getString("Extra_usu", "");
+        SharedPreferences.Editor editor = preferencias.edit();
+        editor.remove("Extra_ges");
+        editor.remove("Extra_root");
+        editor.remove("Extra_usu");
+        editor.commit();
 
 
         cbdd.openForWrite();
@@ -68,10 +83,8 @@ public class BorrarUsuario extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //SACA MENSAJE CON EL ELEMENTO PULSADO
-                Toast.makeText(getApplicationContext(),
-                        "Pulsado " + miLista.get(miRecycler.getChildAdapterPosition(v)).getNombre(),
-                        Toast.LENGTH_SHORT).show();
+                mostrarToast(getResources().getString(R.string.pulsado) + miLista.get(miRecycler.getChildAdapterPosition(v)).getNombre());
+
                 //GUARDA LA POSICION DEL ELEMENTO PULSADO
                 modificar = miRecycler.getChildAdapterPosition(v);
 
@@ -96,7 +109,7 @@ public class BorrarUsuario extends AppCompatActivity {
                         cargarDatos();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "No pueder borrar el usuario activo", Toast.LENGTH_SHORT).show();
+                    mostrarToast(getResources().getString(R.string.borradoUsuario));
                     cargarDatos();
                 }
 
@@ -109,22 +122,44 @@ public class BorrarUsuario extends AppCompatActivity {
 
     //CARGA DE NUEVO ESTA ACTIVIDAD
     public void cargarDatos() {
-        Intent reiniciar = new Intent(BorrarUsuario.this, BorrarUsuario.class);
-        reiniciar.putExtra(Extra_ges, ges);
-        reiniciar.putExtra(Extra_root, root);
-        reiniciar.putExtra(Extra_usu, user);
+        // Va a ver roles y asa las propiedades
+        SharedPreferences preferencias = getSharedPreferences("variables", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferencias.edit();
+        editor.putString("Extra_ges", ges);
+        editor.putString("Extra_root", root);
+        editor.putString("Extra_usu", user);
+        editor.commit();
 
+        Intent reiniciar = new Intent(BorrarUsuario.this, BorrarUsuario.class);
         BorrarUsuario.this.startActivity(reiniciar);
     }
 
     //VUELVE AL MENU
     public void miVolver(View v) {
+
+        // Va a ver roles y asa las propiedades
+        SharedPreferences preferencias = getSharedPreferences("variables", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferencias.edit();
+        editor.putString("Extra_ges", ges);
+        editor.putString("Extra_root", root);
+        editor.putString("Extra_usu", user);
+        editor.commit();
+
         Intent intent = new Intent(v.getContext(), MenuUsuario.class);
-        intent.putExtra(Extra_ges, ges);
-        intent.putExtra(Extra_root, root);
-        intent.putExtra(Extra_usu, user);
-
         startActivity(intent);
+    }
 
+    private void mostrarToast(String texto) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.layout_base));
+
+        TextView textView = layout.findViewById(R.id.txt);
+        textView.setText(texto);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
     }
 }

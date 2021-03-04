@@ -5,32 +5,28 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 public class AdaptadorUsuario extends RecyclerView.Adapter<AdaptadorUsuario.ViewHolderDatos> implements View.OnClickListener {
 
-    private View.OnClickListener escuchador;
     ArrayList<Usuario> miLista;
+    private View.OnClickListener escuchador;
+
+    public AdaptadorUsuario(ArrayList<Usuario> miLista) {
+        this.miLista = miLista;
+    }
 
     public ArrayList<Usuario> getMiLista() {
         return miLista;
     }
 
     public void setMiLista(ArrayList<Usuario> miLista) {
-        this.miLista = miLista;
-    }
-
-    public AdaptadorUsuario(ArrayList<Usuario> miLista) {
         this.miLista = miLista;
     }
 
@@ -79,7 +75,7 @@ public class AdaptadorUsuario extends RecyclerView.Adapter<AdaptadorUsuario.View
             elTelefono = (TextView) itemView.findViewById(R.id.idTelefono);
             elGes = (TextView) itemView.findViewById(R.id.TextViewg);
             elRoot = (TextView) itemView.findViewById(R.id.TextViewr);
-            laImagen=(ImageView) itemView.findViewById(R.id.idFoto);
+            laImagen = (ImageView) itemView.findViewById(R.id.idFoto);
         }
 
         public void asignarDatos(Usuario usuario) {
@@ -95,13 +91,13 @@ public class AdaptadorUsuario extends RecyclerView.Adapter<AdaptadorUsuario.View
             }
 
 
-            if(usuario.getPath()==null){
+            if (usuario.getPath() == null) {
                 laImagen.setImageResource(R.drawable.im1);
 
-            }else{
+            } else {
                 // Reajusta el dpi de las imagenes para los aplicacion
                 Drawable d = Drawable.createFromPath(usuario.getPath());
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                     laImagen.setBackground(d);
                 else
                     laImagen.setBackgroundDrawable(d);

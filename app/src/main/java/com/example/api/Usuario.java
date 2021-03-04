@@ -100,7 +100,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", nombre=" + nombre + ", contra=" + contra + ", num=" + num + ", ges=" + ges + ", root=" + root + '}';
+        return "Usuario{" + "id=" + id + ", nombre=" + nombre + ", contra=" + contra + ", num=" + num + ", ges=" + ges + ", root=" + root + '}' ;
     }
 
 

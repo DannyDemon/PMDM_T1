@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="borrarUsuario">Borrar Usuario</string>
+    <string name="borrarUsuario"><u>Borrar Usuario</u></string>
     <string name="volver">Volver</string>
 
-    <string name="menuPrincial">Menu principal</string>
+    <string name="menuPrincial"><u>Menu principal</u></string>
+
     <string name="usuario">Usuario</string>
     <string name="contraseña">Contraseña</string>
     <string name="iniciar">Iniciar</string>
     <string name="registrarse">Registrarse</string>
 
-    <string name="modificarRol">Modificar rol</string>
+    <string name="modificarRol"><u>Modificar rol</u></string>
     <string name="gestor">Gestor</string>
     <string name="root">Root</string>
+    <string name="pokemon"><u>Pokemon</u></string>
 
 
-    <string name="modificarTelefono">Modificar telefono</string>
+    <string name="modificarTelefono"><u>Modificar telefono</u></string>
     <string name="telefonoNuevo">Telefono nuevo</string>
 
-    <string name="RegistroDeUsuario">Registro de usuario</string>
+    <string name="RegistroDeUsuario"><u>Registro de usuario</u></string>
     <string name="cargarFoto">Cargar Foto</string>
     <string name="aceptar">Aceptar</string>
 
 
-    <string name="verDatosDeUsuario">Ver Datos de Usuario</string>
+    <string name="verDatosDeUsuario"><u>Ver Datos de Usuario</u></string>
 
-    <string name="verMangas">Ver Mangas</string>
+    <string name="verMangas"><u>Ver Mangas</u></string>
 
     <string name="roles">Roles: </string>
 
@@ -36,5 +38,40 @@
     <string name="nombre">Nombre: </string>
     <string name="like">Like</string>
     <string name="dislike">Dislike</string>
+
+
+    <string name="pulsado">Pulsado</string>
+    <string name="borradoUsuario">No pueder borrar el usuario activo</string>
+
+
+    <string name="introduceNume">Introduce solo numeros</string>
+    <string name="noTelefono">No has introducido el telefono</string>
+    <string name="noRolActivo">No pueder cambiar el rol del usuario activo</string>
+    <string name="hacerfotos">Hacer fotos</string>
+    <string name="camposObligatorios">Todos los datos son obligatorios</string>
+    <string name="introduceNumeTelefono">Introduce solo numeros en el campo telefono</string>
+    <string name="permisos">Los permisos no fueron aceptados</string>
+    <string name="credencial">Credenciales erroneas</string>
+
+    <string name="permisosAcceso">No tienes permiso para acceder</string>
+    <string name="video"><u>Video</u></string>
+
+    <string name="play">Iniciar</string>
+    <string name="pause">Pausar</string>
+    <string name="stop">Parar</string>
+
+    <string name="registroRealizado">Registro Realizado</string>
+
+    <string name="permisosDesactivados">Permisos Desactivados</string>
+    <string name="darPermisos">Debe dar permisos para que funcione la aplicación</string>
+    <string name="si">si</string>
+    <string name="no">no</string>
+    <string name="deseaDarPermisos">¿Desea dar permisos de forma manual?</string>
+    <string name="hacerFoto">Hacer Foto</string>
+    <string name="cargarImagen">Cargar Imagen</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="marque">Marque una opción</string>
+    <string name="seleccione">Seleccione la Aplicación</string>
+
 
 </resources>

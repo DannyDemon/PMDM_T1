@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
@@ -15,22 +16,30 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.core.content.res.ResourcesCompat;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -41,25 +50,30 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class Registrar extends AppCompatActivity {
 
-    private final String Extra_res = "res";
-
-    CapituloBaseSQLite bd = new CapituloBaseSQLite(this, "Manga", null, 1);
-    BBDD cbdd = new BBDD(this);
-
     final int COD_MARCADA = 10;
     final int COD_FOTO = 20;
-
+    BBDD cbdd = new BBDD(this);
     ImageView miFoto;
     Button miBoton;
     String path;
+    //Para crear un nombre único de la foto
+    String currentPhotoPath; //ojo este es el path que usaremos en onActivityResult
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_registro);
+
+        Typeface font = ResourcesCompat.getFont(this, R.font.police_person);
+        TextView policePerson = (TextView) findViewById(R.id.TextView1);
+        policePerson.setTypeface(font);
+
         miFoto = (ImageView) findViewById(R.id.laFoto);
         miBoton = (Button) findViewById(R.id.btnCargarFoto);
         if (validarPermisos()) {
@@ -69,7 +83,7 @@ public class Registrar extends AppCompatActivity {
         }
     }
 
-    public void Aceptar(View v) {
+    public void Aceptar(View v) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         cbdd.openForWrite();
 
         EditText campoNombre = findViewById(R.id.editText1);
@@ -79,24 +93,25 @@ public class Registrar extends AppCompatActivity {
         String nom = campoNombre.getText().toString();
         String con = campoContra.getText().toString();
         String tel = campoTel.getText().toString();
-        if ((nom == null) || (con == null) || (tel == null) || (currentPhotoPath==null)) {
-            Toast.makeText(getApplicationContext(), "Todos los datos son obligatorios", Toast.LENGTH_SHORT).show();
-        }else{
-            if (Entradas.comprNumerico(tel.toString()) == true) {
+        if ((nom == null) || (con == null) || (tel == null) || (currentPhotoPath == null)) {
+            mostrarToast(getResources().getString(R.string.camposObligatorios));
 
-                Usuario usu = new Usuario(nom, con, Integer.parseInt(tel),  0, 0, currentPhotoPath);
+        } else {
+            if (Entradas.comprNumerico(tel) == true) {
+
+                Usuario usu = new Usuario(nom, AeSimpleSHA1.SHA1(con), Integer.parseInt(tel), 1, 1, currentPhotoPath);
                 System.out.println(usu);
                 cbdd.insertUsuario(usu);
 
                 SharedPreferences preferencias = getSharedPreferences("variables", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferencias.edit();
-                editor.putString("Mensaje", "Registro realizado");
+                editor.putString("Mensaje", getResources().getString(R.string.registroRealizado));
                 editor.commit();
 
                 Intent intent = new Intent(Registrar.this, MainActivity.class);
                 startActivity(intent);
             } else {
-                Toast.makeText(getApplicationContext(), "Introduce solo numeros en el campo telefono", Toast.LENGTH_SHORT).show();
+                mostrarToast(getResources().getString(R.string.introduceNumeTelefono));
             }
         }
     }
@@ -127,9 +142,9 @@ public class Registrar extends AppCompatActivity {
 
     private void cargarDialogo() {
         AlertDialog.Builder dialogo = new AlertDialog.Builder((Registrar.this));
-        dialogo.setTitle("Permisos Desactivados");
-        dialogo.setMessage("Debe dar permisos para que funcione la aplicación");
-        dialogo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+        dialogo.setTitle(getResources().getString(R.string.permisosDesactivados));
+        dialogo.setMessage(getResources().getString(R.string.darPermisos));
+        dialogo.setPositiveButton(getResources().getString(R.string.aceptar), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -154,9 +169,9 @@ public class Registrar extends AppCompatActivity {
     }
 
     private void pedirPermisosManual() {
-        final CharSequence[] opc = {"si", "no"};
+        final CharSequence[] opc = {getResources().getString(R.string.si), getResources().getString(R.string.no)};
         final AlertDialog.Builder alerta_Opc = new AlertDialog.Builder((Registrar.this));
-        alerta_Opc.setTitle("¿Desea dar permisos de forma manual?");
+        alerta_Opc.setTitle(getResources().getString(R.string.deseaDarPermisos));
         alerta_Opc.setItems(opc, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -173,7 +188,8 @@ public class Registrar extends AppCompatActivity {
                     }
                     /////////////////////////////////////////////
                 } else {
-                    Toast.makeText(getApplicationContext(), "Los permisos no fueron aceptados", Toast.LENGTH_LONG).show();
+                    mostrarToast(getResources().getString(R.string.permisos));
+
                     dialog.dismiss();
                 }
             }
@@ -186,15 +202,23 @@ public class Registrar extends AppCompatActivity {
     }
 
     private void cargarFoto() {
-        final CharSequence[] opc = {"Hacer Foto", "Cancelar"};
+        final CharSequence[] opc = {getResources().getString(R.string.hacerFoto), getResources().getString(R.string.cargarFoto), getResources().getString(R.string.cancelar)};
         final AlertDialog.Builder alerta_Opc = new AlertDialog.Builder((Registrar.this));
-        alerta_Opc.setTitle("Marque una opción");
+        alerta_Opc.setTitle(getResources().getString(R.string.marque));
         alerta_Opc.setItems(opc, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (opc[which].equals("Hacer Foto")) {
+                if (opc[which].equals(getResources().getString(R.string.hacerFoto))) {
                     hacerFoto();
-                    Toast.makeText(getApplicationContext(), "Hacer fotos", Toast.LENGTH_LONG).show();
+                    mostrarToast(getResources().getString(R.string.hacerfotos));
+                } else {
+                    if (opc[which].equals(getResources().getString(R.string.cargarFoto))) {
+                        Intent intent = new Intent(Intent.ACTION_GET_CONTENT, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        intent.setType("image/");
+                        startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.seleccione)), COD_MARCADA);
+                    } else {
+                        dialog.dismiss();
+                    }
                 }
 
             }
@@ -220,7 +244,6 @@ public class Registrar extends AppCompatActivity {
                                     Log.i("ExternalStorage", "-> uri=" + uri);
                                 }
                             });
-                    //Toast.makeText(getApplicationContext(), "Hacer fotos", Toast.LENGTH_LONG).show();
                     Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath);
                     miFoto.setImageBitmap(bitmap);
                     break;
@@ -250,9 +273,6 @@ public class Registrar extends AppCompatActivity {
         }
     }
 
-    //Para crear un nombre único de la foto
-    String currentPhotoPath; //ojo este es el path que usaremos en onActivityResult
-
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -266,6 +286,20 @@ public class Registrar extends AppCompatActivity {
         // Save a file: path for use with ACTION_VIEW intents
         currentPhotoPath = image.getAbsolutePath(); //Variable global
         return image;
+    }
+
+    private void mostrarToast(String texto) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.layout_base));
+
+        TextView textView = layout.findViewById(R.id.txt);
+        textView.setText(texto);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
     }
 
 }

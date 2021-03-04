@@ -15,18 +15,18 @@ import java.util.ArrayList;
 
 public class AdaptadorUsuario2 extends RecyclerView.Adapter<AdaptadorUsuario2.ViewHolderDatos> implements View.OnClickListener {
 
-    private View.OnClickListener escuchador;
     ArrayList<Usuario> miLista;
+    private View.OnClickListener escuchador;
+
+    public AdaptadorUsuario2(ArrayList<Usuario> miLista) {
+        this.miLista = miLista;
+    }
 
     public ArrayList<Usuario> getMiLista() {
         return miLista;
     }
 
     public void setMiLista(ArrayList<Usuario> miLista) {
-        this.miLista = miLista;
-    }
-
-    public AdaptadorUsuario2(ArrayList<Usuario> miLista) {
         this.miLista = miLista;
     }
 
@@ -76,15 +76,15 @@ public class AdaptadorUsuario2 extends RecyclerView.Adapter<AdaptadorUsuario2.Vi
         }
 
         public void asignarDatos(Usuario usuario) {
-            elUsuario.setText(usuario.getId()+"");
+            elUsuario.setText(usuario.getId() + "");
             elNombre.setText(usuario.getNombre());
             elTelefono.setText(usuario.getNum() + "");
-            if(usuario.getPath()==null){
+            if (usuario.getPath() == null) {
                 laImagen.setImageResource(R.drawable.im1);
 
-            }else{
+            } else {
                 Drawable d = Drawable.createFromPath(usuario.getPath());
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                     laImagen.setBackground(d);
                 else
                     laImagen.setBackgroundDrawable(d);

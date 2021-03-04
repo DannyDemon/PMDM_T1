@@ -1,21 +1,24 @@
 package com.example.api;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.SharedPreferences;
-import android.widget.Toast;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,10 +30,6 @@ public class MainActivity extends AppCompatActivity {
     static ArrayList<Usuario> usuarios = new ArrayList();
     static boolean res = false;
 
-    private final String Extra_ges = "ges";
-    private final String Extra_root = "root";
-    private final String Extra_usu = "usu";
-
     static Usuario activeuser;
 
 
@@ -38,56 +37,15 @@ public class MainActivity extends AppCompatActivity {
     EditText campoContra;
 
 
-
     // Metodo que se inicia al arracar la pagina
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        CapituloBaseSQLite bd = new CapituloBaseSQLite(this, "Manga", null, 1);
+
         BBDD cbdd = new BBDD(this);
         cbdd.openForWrite();
-        //BORRAR REGISTROS DDE LA BASE DE DATOS
-        cbdd.removeAll();
 
-        //CEACION DE USUARIOS POR DEFECO
-        Usuario admin = new Usuario("Admin", "Admin", 927179367, 1, 1);
-
-        //INSERTAR USARIOS EN LA BD
-        cbdd.insertUsuario(admin);
         usuarios = (ArrayList<Usuario>) cbdd.getUsuarios();
-
-
-        //CEACION DE mangas POR DEFECO
-        Manga manga1 = new Manga("Strongest Abandoned Son",
-                "Cuando Ye Mo se despertó repentinamente, se dio cuenta de " +
-                        "que todo a su alrededor parecía haber cambiado. Ha sido " +
-                        "transmigrado a la Tierra moderna donde la energía espiritual " +
-                        "es escasa. su maestro Luo Ying ( Luo Susu ) no estaba a la " +
-                        "vista. Lo más importante es que se encontró en el cuerpo de un " +
-                        "joven que también se llamaba Ye Mo.", R.drawable.strongest);
-        Manga manga2= new Manga("Martial Peak",
-                "El viaje hacia la cima marcial es solitario y largo. Ante " +
-                        "la adversidad, debes sobrevivir y permanecer inflexible. Solo " +
-                        "entonces podrás avanzar y continuar tu viaje para convertirte en " +
-                        "el más fuerte. El \"Pabellón Cielo Alto\" pone a prueba a sus " +
-                        "discípulos de las formas más duras para prepararlos para este " +
-                        "viaje. Un día, el humilde barrendero Yang Kai logró obtener un " +
-                        "libro negro, lo que lo puso en el camino hacia la cima del mundo " +
-                        "marcial.", R.drawable.martial);
-        Manga manga3 = new Manga("Dr.Stone",
-                "Senku es un joven extremadamente inteligente con un gran don para " +
-                        "la ciencia y una ácida personalidad, y su mejor amigo es Taiju, que" +
-                        " es muy buena persona pero más apto para usar los músculos que para " +
-                        "pensar. Cuando tras cierto incidente toda la humanidad acaba convertida" +
-                        " en piedra, ellos logran despertarse en un mundo miles de años después, " +
-                        "con la civilización humana completamente desaparecida y con toda la " +
-                        "humanidad congelada en piedra como ellos estuvieron. Ahora es su " +
-                        "obligación rescatar a la gente y crear un nuevo mundo.", R.drawable.dr);
-
-
-        //INSERTAR manga EN LA BD
-        cbdd.insertManga(manga1);
-        cbdd.insertManga(manga2);
-        cbdd.insertManga(manga3);
 
 
         // Metodo de ejecucion del programa
@@ -97,44 +55,58 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-
+        Typeface font = ResourcesCompat.getFont(this, R.font.police_person);
+        TextView policePerson = (TextView) findViewById(R.id.TextView1);
+        policePerson.setTypeface(font);
 
         // shared preference recibe el mensaje cuando registra si va bien.
-        SharedPreferences preferencias=getSharedPreferences("variables", Context.MODE_PRIVATE);
-        String mensaje = preferencias.getString("Mensaje","");
-        SharedPreferences.Editor editor=preferencias.edit();
+        SharedPreferences preferencias = getSharedPreferences("variables", Context.MODE_PRIVATE);
+        String mensaje = preferencias.getString("Mensaje", "");
+        SharedPreferences.Editor editor = preferencias.edit();
         editor.remove("Mensaje");
         editor.commit();
-        if(!mensaje.equals(""))Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+        if (!mensaje.equals("")) mostrarToast(mensaje);
     }
 
-    //COMPRUEBA LA UTENTIFICACION
-    public boolean comprobarInicio() {
 
-         campoNombre  = findViewById(R.id.editText1);
-         campoContra =findViewById(R.id.editText2);
+    //COMPRUEBA LA UTENTIFICACION
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public boolean comprobarInicio() throws Exception {
+
+        campoNombre = findViewById(R.id.editText1);
+        campoContra = findViewById(R.id.editText2);
 
         boolean nom = false;
         boolean con = false;
         boolean aut = false;
 
-        Iterator<Usuario> itr = usuarios.iterator();
-        while (itr.hasNext()) {
-            Usuario u = itr.next();
-            if (u.getNombre().equals(campoNombre.getText().toString())) {
-                nom = true;
-            }
-            if (u.getContra().equals(campoContra.getText().toString())) {
-                con = true;
+        if (null != usuarios) {
+            Iterator<Usuario> itr = usuarios.iterator();
+
+            while (itr.hasNext()) {
+                Usuario u = itr.next();
+
+
+                if (u.getNombre().equals(campoNombre.getText().toString())) {
+                    nom = true;
+                }
+
+                if (u.getContra().equals(AeSimpleSHA1.SHA1(campoContra.getText().toString()))) {
+                    con = true;
+                }
+
+                if (nom && con) {
+                    aut = true;
+                    activeuser = u;
+                    break;
+                }
+                nom = false;
+                con = false;
             }
 
-            if (nom && con) {
-                aut = true;
-                activeuser = u;
-                break;
-            }
-            nom = false;
-            con = false;
+        }
+        if (aut == false) {
+            mostrarToast(getResources().getString(R.string.credencial));
         }
 
         return aut;
@@ -149,18 +121,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //VA AL MENU INICIAR
-    public void miIniciar(View v) {
+    public void miIniciar(View v) throws Exception {
         boolean aut = comprobarInicio();
         if (aut) {
-            Intent intent = new Intent(v.getContext(), MenuUsuario.class);
-            intent.putExtra(Extra_ges, activeuser.isGes() + "");
-            intent.putExtra(Extra_root, activeuser.isRoot() + "");
-            intent.putExtra(Extra_usu, activeuser.getId() + "");
+            SharedPreferences preferencias4 = getSharedPreferences("variables", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor4 = preferencias4.edit();
+            editor4.putString("Extra_ges", activeuser.isGes() + "");
+            editor4.putString("Extra_root", activeuser.isRoot() + "");
+            editor4.commit();
 
+            Intent intent = new Intent(this, MenuUsuario.class);
             startActivity(intent);
 
         }
     }
 
+    private void mostrarToast(String texto) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.layout_base));
 
+        TextView textView = layout.findViewById(R.id.txt);
+        textView.setText(texto);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
 }

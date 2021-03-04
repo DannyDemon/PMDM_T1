@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="borrarUsuario">Delete User</string>
+    <string name="borrarUsuario"><u>Delete User</u></string>
     <string name="volver">Come back</string>
 
-    <string name="menuPrincial">Main menu</string>
+    <string name="menuPrincial"><u>Main menu</u></string>
     <string name="usuario">User</string>
     <string name="contraseña">Password</string>
     <string name="iniciar">Start</string>
     <string name="registrarse">Check in</string>
 
-    <string name="modificarRol">Modify role</string>
+    <string name="modificarRol"><u>Modify role</u></string>
     <string name="gestor">Manager</string>
     <string name="root">Root</string>
 
 
-    <string name="modificarTelefono">Modify phone</string>
+    <string name="modificarTelefono"><u>Modify phone</u></string>
     <string name="telefonoNuevo">New phone</string>
 
-    <string name="RegistroDeUsuario">User register</string>
+    <string name="RegistroDeUsuario"><u>User register</u></string>
     <string name="cargarFoto">Upload Photo</string>
     <string name="aceptar">Accept</string>
 
 
-    <string name="verDatosDeUsuario">View User Data</string>
+    <string name="verDatosDeUsuario"><u>View User Data</u></string>
 
-    <string name="verMangas">See Sleeves</string>
+    <string name="verMangas"><u>See Sleeves</u></string>
 
     <string name="roles">Roles: </string>
 
@@ -36,5 +36,41 @@
     <string name="nombre">Name: </string>
     <string name="like">Like</string>
     <string name="dislike">Dislike</string>
+
+    <string name="pulsado">Pressed </string>
+    <string name="borradoUsuario">You cannot delete the active user</string>
+
+
+    <string name="introduceNume">Enter only numbers</string>
+    <string name="noTelefono">You have not entered the phone</string>
+    <string name="noRolActivo">You cannot change the role of the active user</string>
+    <string name="hacerfotos">Take pictures</string>
+    <string name="camposObligatorios">All data are required</string>
+    <string name="introduceNumeTelefono">Enter only numbers in the phone field</string>
+    <string name="permisos">Permits were not accepted</string>
+    <string name="credencial">Wrong credentials</string>
+
+    <string name="permisosAcceso">You do not have permission to access</string>
+
+    <string name="video"><u>Video</u></string>
+    <string name="pokemon"><u>Pokemon</u></string>
+
+
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Stop</string>
+
+    <string name="registroRealizado">Registration Done</string>
+
+    <string name="permisosDesactivados">Permissions Disabled</string>
+    <string name="darPermisos">You must give permissions for the application to work</string>
+    <string name="si">yes</string>
+    <string name="no">no</string>
+    <string name="deseaDarPermisos">Do you want to give permissions manually?</string>
+    <string name="hacerFoto">Take Photo</string>
+    <string name="cargarImagen">Upload image</string>
+    <string name="cancelar">Cancel</string>
+    <string name="marque">Check one option</string>
+    <string name="seleccione">Select the Application</string>
 
 </resources>

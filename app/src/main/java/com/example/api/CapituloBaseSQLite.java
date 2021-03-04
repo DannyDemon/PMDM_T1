@@ -5,6 +5,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 public class CapituloBaseSQLite extends SQLiteOpenHelper {
     // Constantes para la tablaa de usuarios.
@@ -48,6 +52,47 @@ public class CapituloBaseSQLite extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_BD);
         db.execSQL(CREATE_BD2);
+
+        try {
+            db.execSQL("INSERT INTO " +
+                    TABLA_USUARIOS + " VALUES ( " + null + " , 'Admin' , '" + AeSimpleSHA1.SHA1("Admin") + "', 625483254, 1, 1, null);");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (
+                UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        AppCompatActivity app = new AppCompatActivity();
+        //CEACION DE mangas POR DEFECO
+        db.execSQL("INSERT INTO " +
+                TABLA_MANGA + " VALUES ( " + null + " , 'Strongest Abandon Son' , 'Cuando Ye Mo se despertó repentinamente, se dio cuenta de " +
+                "que todo a su alrededor parecía haber cambiado. Ha sido " +
+                "transmigrado a la Tierra moderna donde la energía espiritual " +
+                "es escasa. su maestro Luo Ying ( Luo Susu ) no estaba a la " +
+                "vista. Lo más importante es que se encontró en el cuerpo de un " +
+                "joven que también se llamaba Ye Mo.' , " + R.drawable.strongest + ");");
+
+        db.execSQL("INSERT INTO " +
+                TABLA_MANGA + " VALUES ( " + null + " , 'Martial Peak' ,  'El viaje hacia la cima marcial es solitario y largo. Ante " +
+                "la adversidad, debes sobrevivir y permanecer inflexible. Solo " +
+                "entonces podrás avanzar y continuar tu viaje para convertirte en " +
+                "el más fuerte. El Pabellón Cielo Alto pone a prueba a sus " +
+                "discípulos de las formas más duras para prepararlos para este " +
+                "viaje. Un día, el humilde barrendero Yang Kai logró obtener un " +
+                "libro negro, lo que lo puso en el camino hacia la cima del mundo " +
+                "marcial.' , " + R.drawable.martial + ");");
+
+        db.execSQL("INSERT INTO " +
+                TABLA_MANGA + " VALUES ( " + null + " , 'Dr.Stone' ,  'Senku es un joven extremadamente inteligente con un gran don para " +
+                "la ciencia y una ácida personalidad, y su mejor amigo es Taiju, que " +
+                "es muy buena persona pero más apto para usar los músculos que para " +
+                "pensar. Cuando tras cierto incidente toda la humanidad acaba convertida " +
+                "en piedra, ellos logran despertarse en un mundo miles de años después, " +
+                "con la civilización humana completamente desaparecida y con toda la " +
+                "humanidad congelada en piedra como ellos estuvieron. Ahora es su " +
+                " obligación rescatar a la gente y crear un nuevo mundo.' , " + R.drawable.dr + ");");
+
+
     }
 
     // Ejecutable de borrado y recreado de las tablas
@@ -58,4 +103,5 @@ public class CapituloBaseSQLite extends SQLiteOpenHelper {
 
         onCreate(db);
     }
+
 }

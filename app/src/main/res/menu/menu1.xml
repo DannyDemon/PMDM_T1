@@ -26,4 +26,16 @@
         android:title="@string/modificarRol"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/item5"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="@string/video"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/item6"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="@string/pokemon"
+        app:showAsAction="never" />
+
 </menu>
