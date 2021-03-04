@@ -204,7 +204,6 @@ public class MenuUsuario extends AppCompatActivity {
 
             case R.id.item6:
 
-                // Va a ver roles y asa las propiedades
                 SharedPreferences preferencias6 = getSharedPreferences("variables", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor6 = preferencias6.edit();
                 editor6.putString("Extra_ges", ges);

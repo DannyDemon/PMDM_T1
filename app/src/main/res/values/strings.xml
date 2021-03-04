@@ -74,5 +74,6 @@
     <string name="seleccione">Select the Application</string>
 
     <string name="desconectar"><u>Disconnect</u></string>
-
+    <string name="gracias">Thank you for accessing Mangas App</string>
+    <string name="notification">My notification</string>>
 </resources>

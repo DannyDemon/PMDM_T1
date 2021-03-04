@@ -55,10 +55,10 @@ public class Animacion extends AppCompatActivity {
         );
 
         mBuilder.setSmallIcon(R.drawable.lanzador)
-                .setContentTitle("My notification")
+                .setContentTitle(getResources().getString(R.string.notification))
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                .setContentText("Hace mucho q no accedes")
-                .setContentIntent(resultPendingIntent).setTimeoutAfter(5000);
+                .setContentText(getResources().getString(R.string.gracias))
+                .setContentIntent(resultPendingIntent);
 
 
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
